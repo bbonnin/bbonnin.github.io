@@ -1,1 +1,143 @@
-Welcome
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Mille Sabords</title>
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@_bruno_b_" />
+    <meta name="twitter:title" content="Bruno Bonnin" />
+    <meta name="twitter:description" content="Software development, architecture, Big Data (Hadoop), NoSQL (MongoDB, Elasticsearch), Javascript everywhere" />
+    <meta name="og:description" content="Software development, architecture, Big Data (Hadoop), NoSQL (MongoDB, Elasticsearch), Javascript everywhere" />
+    <meta name="og:title" content="Bruno Bonnin" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://bbonnin.github.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="vendor/materialize/css/materialize.min.css"  media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.materialdesignicons.com/1.2.65/css/materialdesignicons.min.css" />
+</head>
+
+<body>
+    
+    <nav class="blue darken-3" role="navigation">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">Mille Sabords !</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="https://github.com/bbonnin"><i class="left mdi mdi-github-box"></i>My repositories</a></li>
+                <li><a href="https://twitter.com/_bruno_b_"><i class="left mdi mdi-twitter-box"></i>Follow me</a></li>
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="https://github.com/bbonnin"><i style="height:64px; line-height:64px;" class="right mdi mdi-github-box"></i>My repositories</a></li>
+                <li><a href="https://twitter.com/_bruno_b_"><i style="height:64px; line-height:64px;" class="right mdi mdi-twitter-box"></i>Follow me</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br>
+                <h1 class="header center white-text text-lighten-2">Welcome !</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light white-text text-lighten-2">Here, you will find informations about my github repositories</h5>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div class="parallax"><img src="images/fauteuils2.jpg" alt="Ooooh les beaux fauteuils !"></div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="images/elephant.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Demo of the MongoDB Connector for Hadoop<i class="material-icons right">more_vert</i></span>
+                    <p><a href="https://github.com/bbonnin/MUG-Nantes-Demo-Hadoop">Let's see<i class="right mdi mdi-arrow-right-bold"></i></a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">MongoDB Connector for Hadoop<i class="material-icons right">close</i></span>
+                    <p>MUG Nantes - 09/30/2015 : demo of the MongoDB connector for Hadoop with Hive and Spark.</p>
+                    <p>The repository contains the source code of the demo : SQL requests (for Hive) and Spark jobs (written in Java and Python).</p>
+                    <div class="chip">MongoDB</div><div class="chip">Hadoop</div><div class="chip">Hive</div><div class="chip">Spark</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="images/mongodb.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">SQL requests on data stored in MongoDB<i class="material-icons right">more_vert</i></span>
+                    <p><a href="https://github.com/bbonnin/hadoop-mongodb">Show me the disaster<i class="right mdi mdi-arrow-right-bold"></i></a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">SQL requests on data stored in MongoDB<i class="material-icons right">close</i></span>
+                    <p>This project aims to show how to use the MongoDB connector for Hadoop in order to make SQL queries on data stored in MongoDB.</p>
+                    <div class="chip">MongoDB</div><div class="chip">Hadoop</div><div class="chip">Hive/SQL</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="images/elephant.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">Web interface for Hadoop jobs<i class="material-icons right">more_vert</i></span>
+                    <p><a href="https://github.com/bbonnin/hadoop-jobs">Go to the repo<i class="right mdi mdi-arrow-right-bold"></i></a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Web interface for Hadoop job<i class="material-icons right">close</i></span>
+                    <p>Web interface for Hadoop jobs. This application gives some stats about job, such as average map and reduce time by host. The application has been tested with Hortonworks Data Platform 2.1.</p>
+                    <div class="chip">Hadoop</div><div class="chip">Map/Reduce</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src="images/angular.png">
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">AngularJS directive for pizza<i class="material-icons right">more_vert</i></span>
+                    <p><a href="https://github.com/bbonnin/pizza-angular">Go to lunch<i class="right mdi mdi-arrow-right-bold"></i></a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Directive for pizza<i class="material-icons right">close</i></span>
+                    <p>Angular directive for Zurb Pizza Pie Charts.</p>
+                    <div class="chip">angularjs</div><div class="chip">directive</div><div class="chip">pizza</div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="vendor/materialize/js/materialize.min.js"></script>
+
+    <script>
+    (function($){
+        $(function(){
+            $('.button-collapse').sideNav();
+            $('.parallax').parallax();
+        });
+    })(jQuery);
+
+
+      //var options = [ {selector: '#staggered-test', offset: 50, callback: 'Materialize.toast("This is our ScrollFire Demo!", 1500 )' }, {selector: '#staggered-test', offset: 205, callback: 'Materialize.toast("Please continue scrolling!", 1500 )' }, {selector: '#staggered-test', offset: 400, callback: 'Materialize.showStaggeredList("#staggered-test")' }, {selector: '#image-test', offset: 500, callback: 'Materialize.fadeInImage("#image-test")' } ]; Materialize.scrollFire(options); 
+
+    </script>
+</body>
+</html>
+
