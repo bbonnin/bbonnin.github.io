@@ -3,7 +3,8 @@
     line-height:64px;
 } 
 
-@media only screen and (min-width: 993px)
-.container {
-    width: 80%;
+@media only screen and (min-width : 993px) {
+    .container {
+        width:80%
+    }
 }
