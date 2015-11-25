@@ -59,7 +59,9 @@
                       var data = new DataView(buffer);
                       console.log('Battery percentage is ' + data.getUint8(0));
                     })
-                    .catch(error => { console.log(error); });
+                    .catch(error => { 
+                      console.log(error);
+                    });
       }
     </script>
   </head>
