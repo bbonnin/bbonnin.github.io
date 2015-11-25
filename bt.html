@@ -35,7 +35,7 @@
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
           <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
-          <a href="#features" class="mdl-layout__tab">Features</a>
+          <a href="#first_demo" class="mdl-layout__tab">First demo</a>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -52,35 +52,29 @@
             </div>
           </section>
         </div>
-        <div class="mdl-layout__tab-panel" id="features">
+        <div class="mdl-layout__tab-panel" id="first_demo">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
-              <h4>Features</h4>
-              Minim duis incididunt est cillum est ex occaecat consectetur. Qui sint ut et qui nisi cupidatat. Reprehenderit nostrud proident officia exercitation anim et pariatur ex.
+              <h4>First demo</h4>
               <ul class="toc">
                 <h4>Contents</h4>
-                <a href="#lorem1">Lorem ipsum</a>
-                <a href="#lorem2">Lorem ipsum</a>
-                <a href="#lorem3">Lorem ipsum</a>
-                <a href="#lorem4">Lorem ipsum</a>
-                <a href="#lorem5">Lorem ipsum</a>
+                <a href="#scan">Scan devices</a>
+                <a href="#connect">Connect</a>
               </ul>
 
-              <h5 id="lorem1">Lorem ipsum dolor sit amet</h5>
-              Excepteur et pariatur officia veniam anim culpa cupidatat consequat ad velit culpa est non.
-
-              <p id="lorem2">
-                Tempor voluptate ex consequat fugiat aliqua. Do sit et reprehenderit culpa deserunt culpa. Excepteur quis minim mollit irure nulla excepteur enim quis in laborum. Aliqua elit voluptate ad deserunt nulla reprehenderit adipisicing sint. Est in eiusmod exercitation esse commodo. Ea reprehenderit exercitation veniam adipisicing minim nostrud. Veniam dolore ex ea occaecat non enim minim id ut aliqua adipisicing ad. Occaecat excepteur aliqua tempor cupidatat aute dolore deserunt ipsum qui incididunt aliqua occaecat sit quis. Culpa sint aliqua aliqua reprehenderit veniam irure fugiat ea ad.
+              <h5 id="scan">Scan devices</h5>
+              <p>
+                <code>
+                  navigator.bluetooth.requestDevice({ filters: [{ services: ['battery_service'] }] })
+                    .then(device => { console.log(device.name); })
+                    .catch(error => { console.log(error); });
+                </code>
               </p>
-
-              <h5 id="lorem3">Lorem ipsum dolor sit amet</h5>
-
-              <p id="lorem4">
-                Eiusmod nulla aliquip ipsum reprehenderit nostrud non excepteur mollit amet esse est est dolor. Dolore quis pariatur sit consectetur veniam esse ullamco duis Lorem qui enim ut veniam. Officia deserunt minim duis laborum dolor in velit pariatur commodo ullamco eu. Aute adipisicing ad duis labore laboris do mollit dolor cillum sunt aliqua ullamco. Esse tempor quis cillum consequat reprehenderit. Adipisicing proident anim eu sint elit aliqua anim dolore cupidatat fugiat aliquip qui.
-              </p>
-
-              <p id="lorem5">
-                Nisi eiusmod esse cupidatat excepteur exercitation ipsum reprehenderit nostrud deserunt aliqua ullamco. Anim est irure commodo eiusmod pariatur officia. Est dolor ipsum excepteur magna aliqua ad veniam irure qui occaecat eiusmod aute fugiat commodo. Quis mollit incididunt amet sit minim velit eu fugiat voluptate excepteur. Sit minim id pariatur ex cupidatat cupidatat nostrud nostrud ipsum.
+              <button onclick="scanDevices()">Scan</button>
+              
+              <h5 id="connect">Connect</h5>
+              <p>
+                <code></code>
               </p>
             </div>
           </section>
