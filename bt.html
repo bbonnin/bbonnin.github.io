@@ -25,7 +25,7 @@
     <script>
       function scanDevices() {
         console.log("Requesting device...")
-        navigator.bluetooth.requestDevice({ filters: [{ services: ['0000180f-0000-1000-8000-00805f9b34fb'] }] })
+        navigator.bluetooth.requestDevice({ filters: [{ services: ['22bb746f-2bb0-7554-2d6f-726568705327'] }] })
                     .then(device => { 
                       console.log("Device : " + device.name);
                       //["00001016-d102-11e1-9b23-00025b00a5a5", 
