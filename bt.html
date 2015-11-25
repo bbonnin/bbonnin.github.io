@@ -62,7 +62,8 @@
                       var data = new DataView(buffer);
                       console.log('Battery percentage is ' + data.getUint8(0));
                     })*/
-                    .then(characteristic => {
+                    
+                    /*.then(characteristic => {
                       console.log("Writing value (antidos)...");
                       var str = "011i3";
                       var bytes = [];
@@ -77,9 +78,10 @@
                     .then(characteristic => {
                       console.log("Writing value (tx)...");
                       return characteristic.writeValue(new Uint8Array([7]));
-                    })
+                    })*/
+                    
                     .then(res => {
-                      console.log("write ok !");
+                      //console.log("write ok !");
                       return ollieService.getCharacteristic('22bb746f-2bbf-7554-2d6f-726568705327');
                     })
                     .then(characteristic => {
