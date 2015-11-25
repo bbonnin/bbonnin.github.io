@@ -47,7 +47,9 @@
                     .then(service => {
                       console.log("Getting battery_level characteristic...");
                       //return service.getCharacteristic('battery_level');
-                      return service.getCharacteristic('22bb746f-2bbf-7554-2d6f-726568705327');
+                      //return service.getCharacteristic('22bb746f-2bbf-7554-2d6f-726568705327');
+                      return service.getCharacteristic('22bb746f-2bbd-7554-2d6f-726568705327');
+                      
                     })
                     .then(characteristic => {
                       console.log("Reading value...");
