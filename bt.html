@@ -65,7 +65,7 @@
                       var bytes = [];
                       for (var i = 0; i < str.length; ++i) 
                         bytes.push(str.charCodeAt(i));
-                      return characteristic.writeValue(bytes);
+                      return characteristic.writeValue(new Uint8Array(bytes));
                     })
                     .catch(error => { 
                       console.log(error);
