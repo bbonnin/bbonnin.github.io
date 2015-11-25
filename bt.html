@@ -24,8 +24,15 @@
     </style>
     <script>
       function scanDevices() {
+        console.log("Requesting device...")
         navigator.bluetooth.requestDevice({ filters: [{ services: ['0000180f-0000-1000-8000-00805f9b34fb'] }] })
-                    .then(device => { console.log(device.name); })
+                    .then(device => { 
+                      console.log("Device : " + device.name);
+                      return device.connectGATT();
+                    })
+                    .then(server => {
+                      console.log("Connected !")
+                    })
                     .catch(error => { console.log(error); });
       }
     </script>
