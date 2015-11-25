@@ -31,7 +31,21 @@
                       return device.connectGATT();
                     })
                     .then(server => {
-                      console.log("Connected !")
+                      console.log("Connected !");
+                      console.log("Getting battery_service...");
+                      return server.getPrimaryService('battery_service');
+                    })
+                    .then(service => {
+                      console.log("Getting battery_level characteristic...");
+                      return service.getCharacteristic('battery_level');
+                    })
+                    .then(characteristic => {
+                      console.log("Reading value...");
+                      return characteristic.readValue();
+                    })
+                    .then(buffer => {
+                      var data = new DataView(buffer);
+                      console.log('Battery percentage is ' + data.getUint8(0));
                     })
                     .catch(error => { console.log(error); });
       }
