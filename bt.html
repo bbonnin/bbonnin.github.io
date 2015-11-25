@@ -67,6 +67,9 @@
                         bytes.push(str.charCodeAt(i));
                       return characteristic.writeValue(new Uint8Array(bytes));
                     })
+                    .then(res => {
+                      console.log("write ok !");
+                    })
                     .catch(error => { 
                       console.log(error);
                       console.log(error.name);
