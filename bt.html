@@ -33,11 +33,13 @@
                     .then(server => {
                       console.log("Connected !");
                       console.log("Getting battery_service...");
-                      return server.getPrimaryService('battery_service');
+                      //return server.getPrimaryService('battery_service');
+                      return server.getPrimaryService('22bb746f2bb075542d6f726568705327');
                     })
                     .then(service => {
                       console.log("Getting battery_level characteristic...");
-                      return service.getCharacteristic('battery_level');
+                      //return service.getCharacteristic('battery_level');
+                      return service.getCharacteristic('22bb746f2bbf75542d6f726568705327');
                     })
                     .then(characteristic => {
                       console.log("Reading value...");
