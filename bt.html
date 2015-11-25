@@ -24,7 +24,7 @@
     </style>
     <script>
       function scanDevices() {
-        navigator.bluetooth.requestDevice(/*{ filters: [{ services: ['battery_service'] }] }*/)
+        navigator.bluetooth.requestDevice({}/*{ filters: [{ services: ['battery_service'] }] }*/)
                     .then(device => { console.log(device.name); })
                     .catch(error => { console.log(error); });
       }
