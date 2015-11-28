@@ -62,12 +62,13 @@
                 <a href="#scan">Scan devices</a>
                 <a href="#connect">Connect</a>
                 <a href="#wakeOllie">And now : wake up Ollie !</a>
+                <a href="#testOllie">Test Ollie</a>
               </ul>
 
               <h5 id="scan">Scan devices</h5>
               <p>
                 <pre><code class="lang-js">
-                  <span class="color:deepskyblue;">navigator.bluetooth.requestDevice</span>({ filters: [{ services: ['battery_service'] }] })
+                  <span style="color:deepskyblue;">navigator.bluetooth.requestDevice</span>({ filters: [{ services: ['battery_service'] }] })
                     .then(device => {
                       console.log(device.name);
                     })
@@ -89,11 +90,41 @@
               </p>
 
               <h5 id="wakeOllie">And now : wake up Ollie !</h5>
-              <p>
-                <pre></pre>
+              <p>      
               </p>
               <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="requestAndConnectAndGetServiceAndWriteCharacteristic()">
                 <i class="material-icons">alarm</i>
+              </button>
+          
+              <h5 id="testOllie">Test Ollie</h5>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="requestDevice()">
+                <i class="material-icons">question_answer</i>
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="connectToOllie()">
+                <i class="material-icons">bluetooth_connected</i>
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="getOllieService()">
+                <i class="material-icons">room_service</i>
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="wakeOllie()">
+                <i class="material-icons">alarm</i>
+              </button>
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="testColor()">
+                <i class="material-icons">invert_colors</i>
+              </button>
+              <p>
+                <div id="device"></div>
+                <div id="uuids"></div>
+                <input type="text" size="50" id="char_id"><input type="text" size="10" id="char_value">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="testOllie()">
+                  <i class="material-icons">play_circle_filled</i>
+                </button>  
+                <pre>
+                </pre>
+              </p>
+              
+              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" onclick="stopOllie()">
+                <i class="material-icons">stop</i>
               </button>
 
             </div>
@@ -110,6 +141,8 @@
       </main>
     </div>
     <a href="https://github.com/bbonnin/bbonnin.github.io/tree/master/demo" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View Source</a>
+    
+	 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="bt.js"></script>
