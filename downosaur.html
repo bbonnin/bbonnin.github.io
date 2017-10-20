@@ -7,6 +7,12 @@
             width: 25px;
             height: 25px;
         }
+        table {
+            padding-top: 50px;
+            margin: auto;
+            border-spacing: 0;
+            border-collapse: separate;
+        }
     </style>
     <script type="text/javascript">
         const downosaur = [
@@ -48,7 +54,6 @@
 
                     if (downosaur[i][j]) {
                         cell.className = 'cell'
-                        cell.style.background = '#04314e'
                     }
                 }
             }
@@ -56,6 +61,6 @@
     </script>
 </head>
 <body onload="drawDownosaur()">
-    <table id="downosaur" cellspacing="0"></table>
+    <table id="downosaur"></table>
 </body>
 </html>
