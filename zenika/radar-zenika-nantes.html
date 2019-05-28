@@ -1,0 +1,226 @@
+<!--
+Copyright 2018 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- Source: https://developers.google.com/sheets/api/quickstart/js -->
+<!-- [START sheets_quickstart] -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Radar Zenika Nantes</title>
+    <meta charset="utf-8" />
+    <style>
+      .radar {
+        max-width: 850px;
+        margin: auto;
+      }
+
+      .center {
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      .center button {
+        margin: auto;
+      }
+
+      .button--grey {
+        display: inline-block;
+        border-radius: 4px;
+        border: 1px solid #35495e;
+        color: #35495e;
+        text-decoration: none;
+        padding: 5px 20px;
+        margin-left: 15px;
+      }
+
+      .button--grey:hover {
+        color: #fff;
+        background-color: #35495e;
+      }
+
+      .title {
+        font-weight: 300;
+        color: #35495e;
+        word-spacing: 5px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      body {
+        font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Radar Zenika <small id="stats"></small></h1>
+
+    <pre id="content"></pre>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <div class="center">
+      <button id="authorize_button" class="button--grey" style="display: none;">Authorize</button>
+      <button id="signout_button" class="button--grey" style="display: none;">Sign Out</button>
+      <button id="hideshow_button" class="button--grey" style="display: none;">Show/hide all</button>
+    </div>
+
+    <div class="radar">
+      <canvas id="radar" width="850" height="850" style="display: none;"></canvas>
+    </div>
+      
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '1066031403625-succh2altdraeiqfsttbqg7qa29rl3kv.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyDj9_F6orcSrGRJnsge8OpmNrt20AKaBII';
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+
+      var authorizeButton = document.getElementById('authorize_button');
+      var signoutButton = document.getElementById('signout_button');
+      var authElt = [ 'hideshow_button', 'signout_button', 'radar', 'stats' ];
+
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+          appendPre(JSON.stringify(error, null, 2));
+        });
+      }
+
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          authElt.forEach(id => document.getElementById(id).style.display = 'initial');
+          listMajors();
+        } else {
+          authorizeButton.style.display = 'block';
+          authElt.forEach(id => document.getElementById(id).style.display = 'none');
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
+
+      /**
+       * Print the names and majors of students in a sample spreadsheet:
+       * https://docs.google.com/spreadsheets/d/1kOIIOw054ph5Vmw0sFxOhGSreKyJRSJD_o4KitnSB-Q/edit
+       * https://docs.google.com/spreadsheets/d/1kQhPFVLuSF4OsY_8vcrU3dm_dGKLOzjw9bFGnU0UtmE/edit#gid=309525297
+       */
+      function listMajors() {
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1kQhPFVLuSF4OsY_8vcrU3dm_dGKLOzjw9bFGnU0UtmE',
+          range: 'Réponses au formulaire 1!B2:E',
+        }).then(function(response) {
+          var range = response.result;
+          var users = _.uniq(range.values.map(v => v.shift()));
+          var normValues = normalize(range.values);
+          document.getElementById('stats').innerText = ' - ' + range.values.length + ' réponses, ' + users.length + ' pers.'
+          createChart(normValues);
+        }, function(response) {
+          alert('Error: ' + response.result.error.message);
+        });
+      }
+
+      /**
+       * Create a bubble charts with the data from the google sheet.
+       */
+      function createChart(values) {
+        var data = _.chain(values)
+          .groupBy('nom')
+          .map(d => { 
+            return { cat: getCategorie(d[0].nom), name: d[0].nom, x: _.meanBy(d, 'envie'), y: _.meanBy(d, 'connaissance'), r: d.length*R_FACTOR }
+          })
+          .groupBy('cat')
+          .map(d => {
+            return { label: d[0].cat, data: d, backgroundColor: catColors[d[0].cat], borderColor: catColors[d[0].cat] }
+          })
+          .value();
+
+        var bubbleChart = createBubbleChart(data);
+
+        document.querySelector("#hideshow_button").onclick = function() {
+	        bubbleChart.data.datasets.forEach(function(ds) {
+            ds.hidden = !ds.hidden;
+          });
+          bubbleChart.update();
+        }
+      }
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="technos.js"></script>
+    <script src="chart.js"></script>
+  </body>
+</html>
+<!-- [END sheets_quickstart] -->
