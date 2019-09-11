@@ -23,6 +23,7 @@ function createBubbleChart(data) {
   var ctx = document.getElementById('radar').getContext('2d');
   var bubbleChart = new Chart(ctx, {
     type: 'bubble',
+    responsive: true,
     data: { datasets: data },
     options: {
       tooltips: {
@@ -60,15 +61,16 @@ function createBubbleChart(data) {
           },
           formatter: function(value) {
             //return Math.round(value.v);
-            //if (value.r > 10)
+            if (value.r > 10)
               return value.name;
-            //return ''
+            return ''
           },
           offset: 2,
           padding: 0
         }
       },
       aspectRatio: 1,
+      maintainAspectRatio: false,
       title: {
         display: false,
         text: 'Radar Zenika'
