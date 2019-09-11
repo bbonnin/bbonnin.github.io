@@ -20,7 +20,7 @@ const categories = {
     'jenkins': 'CI/CD',
     'lean management': 'agile',
     'nestjs': 'front',
-    'nodejs': 'front',
+    'nodejs': 'back',
     'python': 'lang',
     'rabbitmq': 'data',
     'reactjs': 'front',
@@ -203,7 +203,8 @@ const normes = {
     'ux':'ux/ui',
     'ux / design': 'ux/ui',
     'vue js':'vuejs',
-    'vue.js':'vuejs'
+    'vue.js':'vuejs',
+    'vue':'vuejs'
 } 
 
 /**
