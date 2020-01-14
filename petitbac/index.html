@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Petit Bac</title>
+    <meta name="description" content="petit bac">
+
+    <style>
+      #app {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .lettre {
+        font-weight: bold;
+        font-size: 20vw;
+        text-align: center;
+        margin-top: 20vw;
+      }
+      .boutons {
+        margin-top: 10vw;
+        text-align: center;
+      }
+      .bouton {
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5vw;
+        font-size: 5vw;
+      }
+      .lettre-suivante {
+        background-color: #4CAF50;
+      }
+      .remise-zero {
+        background-color: #f44336;
+      }
+      .categories {
+        list-style: none;
+      }
+      .liste {
+        text-align: justify;
+        margin-top: 10vw;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="lettre">
+      {{ lettre }}
+      </div>
+      <div class="boutons">
+        <button class="bouton lettre-suivante" @click="nouvelleLettre()">Lettre au hasard</button>
+        <button class="bouton remise-zero" @click="remiseAZero()">Remise à zéro</button>
+      </div>
+      <div class="liste">
+        <ul class="categories">
+          <li>Pays</li>
+          <li>Ville</li>
+          <li>Objet</li>
+          <li>Sport</li>
+          <li>Animal</li>
+          <li>Prénom</li>
+          <li>Métier</li>
+          <li>Marque</li>
+          <li>Couleur</li>
+          <li>Vêtement</li>
+          <li>Jeu / jouet</li>
+          <li>Fruit / légume</li>
+          <li>Partie du corps</li>
+          <li>Personnage de fiction</li>
+          <li>Acteur / chanteur / ...</li>
+          <li>Plante (fleur, arbre, ...)</li>
+          <li>Série / film / dessin animé</li>
+          <li>Plat / fromage / dessert / boisson</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        lettre: '?',
+        lettresJouees: Array(26).fill(false)
+      },
+      methods: {
+        nouvelleLettre: function () {
+          this.lettre = this.lettreAuHasard()
+        },
+        remiseAZero: function () {
+          this.lettre = '?'
+          this.lettresJouees = Array(26).fill(false)
+        },
+        lettreAuHasard(verifierSiDejaUtilisee = true) {
+          if (verifierSiDejaUtilisee) {
+            // On vérifie si toutes les lettres n'ont pas déjà été utilisées
+            const toutUtilise = this.lettresJouees.reduce((total, currentValue) => total && currentValue, true)
+            if (toutUtilise) {
+              this.lettresJouees = Array(26).fill(false)
+            }
+          }
+
+          const lettres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+          let fini = !verifierSiDejaUtilisee
+          let uneLettre = lettres.charAt(Math.floor(Math.random() * lettres.length))
+
+          while (!fini) {
+            const idx = uneLettre.charCodeAt(0) - 65
+            if (this.lettresJouees[idx]) {
+              uneLettre = lettres.charAt(Math.floor(Math.random() * lettres.length))
+            } else {
+              this.lettresJouees[idx] = true
+              fini = true
+            }
+          }
+
+          console.log(this.lettresJouees)
+
+          return uneLettre
+        }
+      }
+    })
+    </script>
+  </body>
+</html>
