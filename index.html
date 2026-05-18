@@ -1,79 +1,835 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welcome!</title>
-    <meta name="generator" content="VuePress 1.7.1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-    <script src="/datamaps.world.min.js"></script>
-    <meta name="description" content="Bruno Bonnin's Home Page">
-    <meta name="keywords" content="apache pulsar, mongo, mongodb, vue, vuejs, hadoop, nosql, elastic, spark, kafka">
-    <meta http-equiv='cache-control' content='no-cache'> 
-    <meta http-equiv='expires' content='0'> 
-    <meta http-equiv='pragma' content='no-cache'>
-    
-    <link rel="preload" href="/assets/css/0.styles.a94f9575.css" as="style">
-    <!-- link rel="preload" href="/assets/js/app.6f19aadd.js" as="script">
-    <link rel="preload" href="/assets/js/2.0316bc4f.js" as="script">
-    <link rel="preload" href="/assets/js/8.11f4648d.js" as="script">
-    <link rel="preload" href="/assets/js/3.d02e2052.js" as="script">
-    <link rel="prefetch" href="/assets/js/4.96137cb3.js">
-    <link rel="prefetch" href="/assets/js/5.2c2b4601.js">
-    <link rel="prefetch" href="/assets/js/6.9671cb05.js">
-    <link rel="prefetch" href="/assets/js/7.392b731e.js" -->
-    <link rel="stylesheet" href="/assets/css/0.styles.a94f9575.css">
-  </head>
-  <body>
-    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" aria-current="page" class="home-link router-link-exact-active router-link-active"></a> <div class="links"><!----> <nav class="nav-links can-hide"><div class="nav-item"><a href="https://twitter.com/_bruno_b_" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Twitter
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/bbonnin" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Github
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://www.linkedin.com/in/bruno-bonnin/" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Linkedin
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="https://twitter.com/_bruno_b_" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Twitter
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/bbonnin" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Github
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://www.linkedin.com/in/bruno-bonnin/" target="_blank" rel="noopener noreferrer" class="nav-link external">
-  Linkedin
-  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hello"><a href="#hello" class="header-anchor">#</a> Hello</h1> <p class="intro">
-My name is Bruno Bonnin, I am a software engineer, and my current position is IT architect.<br>
-My favorite technologies right now: NoSQL databases (such as <a href="https://university.mongodb.com/certified_professional_finder/#name=bruno%20bonnin" target="_blank" class="link">MongoDB</a>, ArangoDB, ElasticSearch, ...), stream processing systems (<a href="https://www.credential.net/avb0sgal" target="_blank" class="link">Kafka</a>, Pulsar, Spark Streaming, Storm, Flink) and also web dev with Vue.js!
-</p> <blockquote><p>Remember: keep calm and drink tea 🍵 !!!!! <a href="https://bbonnin.github.io/downosaur.html" target="_blank" rel="noopener noreferrer">Otherwise<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>...</p></blockquote> <h2 id="some-projects"><a href="#some-projects" class="header-anchor">#</a> Some projects</h2> <div class="custom-block tip"><p class="custom-block-title">Just a few ones</p> <p>The whole list is <a href="https://github.com/bbonnin?tab=repositories" target="_blank" rel="noopener noreferrer">here<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <ul><li><a href="https://github.com/bbonnin/pulsar-express" target="_blank" rel="noopener noreferrer">pulsar-express<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>: Web UI for Apache Pulsar</li> <li><a href="https://github.com/bbonnin/vue-morris" target="_blank" rel="noopener noreferrer">vue-morris<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>: VueJS component wrapping Morris.js</li> <li><a href="https://github.com/bbonnin/zeppelin-mongodb-interpreter" target="_blank" rel="noopener noreferrer">zeppelin-mongodb-interpreter<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> MongoDB interpreter for Apache Zeppelin</li> <li><a href="https://github.com/bbonnin/pulsar-io-mongo" target="_blank" rel="noopener noreferrer">pulsar-io-mongo<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> MongoDB Sink for Apache Pulsar (merged in the Apache project 🎉)</li> <li><a href="https://github.com/bbonnin/rpulsar" target="_blank" rel="noopener noreferrer">rpulsar<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> R client for Apache Pulsar</li> <li><a href="https://github.com/bbonnin/docker-hadoop-3" target="_blank" rel="noopener noreferrer">docker-hadoop-3<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> Docker file for Hadoop 3 (for testing purpose)</li> <li><a href="https://github.com/bbonnin/hadoop-jobs" target="_blank" rel="noopener noreferrer">hadoop-jobs<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> Web interface for Hadoop jobs</li> <li><a href="https://github.com/bbonnin/webrtc" target="_blank" rel="noopener noreferrer">webrtc<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> Basic example of WebRTC (with video calls)</li></ul> <h2 id="some-talks"><a href="#some-talks" class="header-anchor">#</a> Some talks</h2> 
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Bruno Bonnin's Home Page" />
+  <meta name="keywords" content="apache pulsar, mongo, mongodb, vue, vuejs, hadoop, nosql, elastic, spark, kafka" />
+  <title>Bruno Bonnin's Home Page</title>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  <script src="https://bbonnin.github.io/datamaps.world.min.js"></script>
 
-<h3 id="_2022"><a href="#_2022" class="header-anchor">#</a> 2022</h3> 
-<ul>
-  <li>R2DBC = R2D2 + JDBC (enfin presque...):
-<ul><li><a href="https://speakerdeck.com/bbonnin/r2dbc-equals-r2d2-plus-jdbc-enfin-presque-dot-dot-dot-d8cbd165-e769-48ef-a4dc-8d358fb2aa0e" target="_blank" rel="noopener noreferrer">Devoxx Fr, Paris<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://youtu.be/0nrTtSzLdyw" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li>
-</ul>
-</li>
-</ul>
+  <style>
+    /* ============================
+       DESIGN TOKENS (easy to tweak)
+       ============================ */
+    :root {
+      --color-bg:           #ffffff;
+      --color-surface:      #f8fafc;
+      --color-surface-2:    #f1f5f9;
+      --color-border:       #e2e8f0;
+      --color-border-hover: #c7d2fe;
 
-<h3 id="_2019"><a href="#_2019" class="header-anchor">#</a> 2019</h3> 
-<ul><li>Stream processing avec Apache Pulsar:
-<ul><li><a href="https://speakerdeck.com/bbonnin/stream-processing-avec-apache-pulsar-b3106b65-5334-4d43-8934-a13884a6f5af" target="_blank" rel="noopener noreferrer">Paris Open Source Summit<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li>
- <li><a href="https://speakerdeck.com/bbonnin/stream-processing-avec-apache-pulsar" target="_blank" rel="noopener noreferrer">Devoxx Ma, Agadir<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> 
- <li>Introduction à Apache Pulsar:
-<ul><li><a href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar" target="_blank" rel="noopener noreferrer">Devoxx Fr, Paris<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://www.youtube.com/watch?v=GJPtzpu3v3I" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar-6d02497a-34d8-4a7a-98cc-fd67c9364cd7" target="_blank" rel="noopener noreferrer">Paris Data Engineers<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar-0b424424-8d8b-4afe-99cb-5f76be08e176" target="_blank" rel="noopener noreferrer">SunnyTech, Montpellier<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Java User Group, Nantes</li></ul></li> <li><a href="https://bbonnin.github.io/talks/nantes-jug-2019/#0" target="_blank" rel="noopener noreferrer">R + Java = 💛<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Java User Group, Nantes)</li></ul> <h3 id="_2018"><a href="#_2018" class="header-anchor">#</a> 2018</h3> <ul><li><a href="https://bbonnin.github.io/talks/devoxx-maroc-2018/#0" target="_blank" rel="noopener noreferrer">De l'R, les devs Java !<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Devoxx Ma, Marrakech)</li> <li>Stream processing et SQL:
-<ul><li><a href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-121218085" target="_blank" rel="noopener noreferrer">ScalaIO, Lyon<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://www.youtube.com/watch?v=0fdozMlnkwQ" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-114503776" target="_blank" rel="noopener noreferrer">JugSummerCamp, La Rochelle<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-102460358" target="_blank" rel="noopener noreferrer">Web2Day, Nantes<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://www.youtube.com/watch?v=mESYsjZuGyw" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li><a href="https://fr.slideshare.net/BrunoBonnin/guide-un-tout-petit-peu-pratique-et-totalement-subjectif-du-stream-processing" target="_blank" rel="noopener noreferrer">Guide (un tout petit peu) pratique (et totalement subjectif) du stream processing<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (SunnyTech, Montpellier)</li></ul> <h3 id="_2017"><a href="#_2017" class="header-anchor">#</a> 2017</h3> <ul><li><a href="https://speakerdeck.com/bbonnin/stream-processing-et-sql" target="_blank" rel="noopener noreferrer">Stream processing et SQL<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Devoxx Ma, Casablanca)</li> <li><a href="https://speakerdeck.com/bbonnin/progressive-web-apps-with-vue-dot-js" target="_blank" rel="noopener noreferrer">Progressive Web Apps with Vue.js<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Devoxx Ma, Casablanca)</li> <li>Vue.js, même un dev java peut en faire !
-<ul><li><a href="https://fr.slideshare.net/BrunoBonnin/jug-summer-camp-2017-vuejs-mme-un-dev-java-peut-en-faire" target="_blank" rel="noopener noreferrer">JugSummerCamp, La Rochelle<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://fr.slideshare.net/BrunoBonnin/vuejs-mme-un-dev-java-peut-en-faire" target="_blank" rel="noopener noreferrer">BreizhCamp, Rennes<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="https://www.youtube.com/watch?v=rbCnLNu8Y_c" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.youtube.com/watch?v=4hAf2Z8fDyY" target="_blank" rel="noopener noreferrer">Web2Day, Nantes 📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul> <h3 id="_2016"><a href="#_2016" class="header-anchor">#</a> 2016</h3> <ul><li><a href="https://fr.slideshare.net/BrunoBonnin/apache-spark-avec-nodejs-oui-cest-possible-avec-eclairjs" target="_blank" rel="noopener noreferrer">Apache Spark avec NodeJS ? Oui, c'est possible avec EclairJS !<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (DevFest, Nantes)</li> <li><a href="https://fr.slideshare.net/BrunoBonnin/vue-javais-pas-vu" target="_blank" rel="noopener noreferrer">Vue, j’avais pas vu !<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Codeurs en Seine, Rouen)</li> <li><a href="https://fr.slideshare.net/BrunoBonnin/explorez-vos-donnes-prsentes-dans-mongodb-avec-apache-zeppelin" target="_blank" rel="noopener noreferrer">Explorez vos données présentes dans MongoDB avec Apache Zeppelin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (MongoDB User Group, Nantes)</li> <li><a href="https://speakerdeck.com/bbonnin/big-data-viz-and-much-more-with-apache-zeppelin" target="_blank" rel="noopener noreferrer">Big data viz (and much more!) with Apache Zeppelin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Web2Day, Nantes)</li> <li>Tout ce que le getting started MongoDB ne vous dira pas (with P.A. Dewitte):
-<ul><li><a href="https://speakerdeck.com/bbonnin/tout-ce-que-le-getting-started-mongodb-ne-vous-dira-pas-1" target="_blank" rel="noopener noreferrer">Web2Day, Nantes<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://speakerdeck.com/bbonnin/tout-ce-que-le-getting-started-mongodb-ne-vous-dira-pas" target="_blank" rel="noopener noreferrer">BreizhCamp, Rennes<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li><a href="https://speakerdeck.com/bbonnin/explorez-vos-donnees-avec-apache-zeppelin" target="_blank" rel="noopener noreferrer">Explorez vos données avec Apache Zeppelin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (Human Talks, Nantes)</li></ul> <h3 id="_2015"><a href="#_2015" class="header-anchor">#</a> 2015</h3> <ul><li><a href="https://speakerdeck.com/bbonnin/mongodb-et-son-connecteur-pour-hadoop" target="_blank" rel="noopener noreferrer">MongoDB et son connecteur pour Hadoop<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (MongoDB User Group, Nantes)</li> <li><a href="https://speakerdeck.com/bbonnin/comment-ne-pas-reussir-a-modeliser-ses-data-dans-elasticsearch" target="_blank" rel="noopener noreferrer">Comment (ne pas réussir à) modéliser ses data dans Elasticsearch<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> (BreizhCamp, Rennes)
-<a href="https://www.youtube.com/watch?v=UteT4ARW-eE" target="_blank" rel="noopener noreferrer">📺<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="and-my-travels"><a href="#and-my-travels" class="header-anchor">#</a> And my travels !!</h2> <div><div id="travel-map" class="travel-map"></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <!-- script src="/assets/js/app.6f19aadd.js" defer></script><script src="/assets/js/2.0316bc4f.js" defer></script><script src="/assets/js/8.11f4648d.js" defer></script><script src="/assets/js/3.d02e2052.js" defer></script -->
+      --color-text:         #0f172a;   /* slate-900 */
+      --color-text-muted:   #64748b;   /* slate-500 */
+      --color-text-subtle:  #94a3b8;   /* slate-400 */
+
+      --color-accent:       #4f46e5;   /* indigo-600 */
+      --color-accent-hover: #4338ca;   /* indigo-700 */
+      --color-accent-light: #eef2ff;   /* indigo-50  */
+      --color-accent-mid:   #c7d2fe;   /* indigo-200 */
+
+      --color-video-bg:     #fdf4ff;
+      --color-video-text:   #7c3aed;
+      --color-video-border: #e9d5ff;
+
+      --font-display: system-ui, sans-serif;
+      --font-body:    system-ui, sans-serif;
+
+      --text-base:  16px;
+      --lh-body:    1.8;
+      --radius-sm:  6px;
+      --radius:     10px;
+      --radius-lg:  16px;
+      --max-width:  820px;
+      --shadow-sm:  0 1px 3px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+      --shadow-md:  0 4px 16px rgba(79,70,229,.10), 0 1px 4px rgba(15,23,42,.06);
+    }
+
+    /* ============================
+       RESET & BASE
+       ============================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--lh-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    a:hover { color: var(--color-accent-hover); }
+
+    /* ============================
+       LAYOUT
+       ============================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.75rem;
+    }
+
+    /* ============================
+       HEADER
+       ============================ */
+    header {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--color-text);
+    }
+    .site-name:hover { color: var(--color-accent); }
+
+    .social-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s, color 0.15s;
+    }
+    .social-links a:hover {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+
+    .social-links svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       HERO
+       ============================ */
+    .hero {
+      /*padding: 5.5rem 0 4.5rem;*/
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative gradient blob */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      pointer-events: none;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      /*max-width: 600px;*/
+      /*margin-bottom: 2rem;*/
+    }
+    .hero-desc a { font-weight: 600; }
+
+    /* ============================
+       MAIN
+       ============================ */
+    main {
+      padding: 0 0 5rem;
+      /*border-top: 1px solid var(--color-border);*/
+    }
+
+    /* ============================
+       SECTIONS
+       ============================ */
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    /* Year headings in Talks */
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: -0.01em;
+      margin: 2.25rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    /* ============================
+       PROJECTS
+       ============================ */
+    .projects-note {
+      font-size: 1rem;
+      color: var(--color-text-subtle);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-list { list-style: none; }
+
+    .project-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      margin-bottom: 0.5rem;
+      background: var(--color-bg);
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .project-item:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .project-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      background: var(--color-accent-light);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .project-name {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.1rem;
+    }
+    .project-name a { color: inherit; }
+    .project-item:hover .project-name a { color: var(--color-accent); }
+
+    .project-desc {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+    }
+
+    .project-arrow {
+      margin-left: auto;
+      color: var(--color-text-subtle);
+      font-size: 1rem;
+      transition: transform 0.2s, color 0.2s;
+    }
+    .project-item:hover .project-arrow {
+      transform: translateX(3px);
+      color: var(--color-accent);
+    }
+
+    /* ============================
+       TALKS
+       ============================ */
+    .talks-list { list-style: none; }
+
+    .talk-item {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .talk-item:last-child { border-bottom: none; }
+
+    .talk-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: 0.45rem;
+      line-height: 1.5;
+    }
+
+    /* Liste des conférences — chaque événement est un groupe slides + vidéo */
+    .talk-venues {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Un groupe = 1 conférence + son éventuelle vidéo côte à côte */
+    .talk-event {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--color-border);
+      border-radius: 99px;
+      overflow: hidden;
+      background: var(--color-surface-2);
+      transition: border-color 0.15s;
+    }
+    .talk-event:hover { border-color: var(--color-accent-mid); }
+
+    /* Lien slides (nom de la conférence) */
+    .tag-venue {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tag-venue:hover {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+    }
+
+    /* Badge vidéo — séparé visuellement mais accolé à la conférence */
+    .tag-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      background: var(--color-video-bg);
+      color: var(--color-video-text);
+      border-left: 1px solid var(--color-video-border);
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .tag-video:hover { background: #f3e8ff; color: #6d28d9; }
+
+    /* Conférence sans lien (pas de slides disponibles) */
+    .tag-plain {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      color: var(--color-text-subtle);
+      cursor: default;
+    }
+
+    .travel-map {
+      position: relative;
+      width: 700px;
+      height: 600px;
+    }
+
+    /* ============================
+       ANIMATIONS
+       ============================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero    { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+    section  { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+    section:nth-of-type(1) { animation-delay: 0.07s; }
+    section:nth-of-type(2) { animation-delay: 0.14s; }
+    section:nth-of-type(3) { animation-delay: 0.21s; }
+
+    /* ============================
+       RESPONSIVE
+       ============================ */
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 0 2.5rem; }
+      .social-links .label { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================
+       HEADER
+       ============================ -->
+  <header>
+    <div class="container">
+
+      <!-- ✏️ Nom dans le header -->
+      <a href="#" class="site-name">Hello!</a>
+
+      <!-- ✏️ Liens sociaux -->
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/bbonnin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <span class="label">GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/bruno-bonnin/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span class="label">LinkedIn</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- ============================
+       HERO
+       ============================ -->
+  
+  <div class="container">
+    <section class="hero">
+      <!-- ✏️ Bio -->
+      <p class="hero-desc">
+        My name is Bruno Bonnin, I am a software engineer, and my current position is solution architect.<br>
+        My favorite technologies right now: NoSQL databases (such as <a href="https://university.mongodb.com/certified_professional_finder/#name=bruno%20bonnin" target="_blank" class="link">MongoDB</a>, ArangoDB, ElasticSearch, ...), stream processing systems (<a href="https://www.credential.net/avb0sgal" target="_blank" class="link">Kafka</a>, Pulsar, Spark Streaming, Storm, Flink) and also web dev with Vue.js!
+      </p>
+    </section>
+  </div>
+  
+  <main>
+    <div class="container">
+
+      <!-- ============================
+           SECTION: PROJETS
+           ============================ -->
+      <section id="projects">
+
+        <div class="section-title">
+          <span class="section-pill">01</span>
+          <h2>Some projects</h2>
+        </div>
+
+        <p class="projects-note">
+          Just a few ones - the whole list is 
+          <a href="https://github.com/bbonnin?tab=repositories" target="_blank" rel="noopener">on GitHub →</a>
+        </p>
+
+        <!-- ✏️ Ajoutez / retirez des projets ici -->
+        <ul class="project-list">
+
+          <li class="project-item">
+            <div class="project-icon">📡</div>
+            <div>
+              <span class="project-name"><a href="https://github.com/bbonnin/pulsar-express" target="_blank" rel="noopener">pulsar-express</a></span>
+              <span class="project-desc">Web UI for Apache Pulsar</span>
+            </div>
+            <span class="project-arrow">→</span>
+          </li>
+
+          <li class="project-item">
+            <div class="project-icon">📈</div>
+            <div>
+              <span class="project-name"><a href="https://github.com/bbonnin/vue-morris" target="_blank" rel="noopener">vue-morris</a></span>
+              <span class="project-desc">VueJS component wrapping Morris.js</span>
+            </div>
+            <span class="project-arrow">→</span>
+          </li>
+
+          <li class="project-item">
+            <div class="project-icon">🗃️</div>
+            <div>
+              <span class="project-name"><a href="https://github.com/bbonnin/zeppelin-mongodb-interpreter" target="_blank" rel="noopener">zeppelin-mongodb-interpreter</a></span>
+              <span class="project-desc">MongoDB interpreter for Apache Zeppelin</span>
+            </div>
+            <span class="project-arrow">→</span>
+          </li>
+
+          <li class="project-item">
+            <div class="project-icon">🤖</div>
+            <div>
+              <span class="project-name"><a href="https://github.com/bbonnin/openapi-to-mcp" target="_blank" rel="noopener">openapi-to-mcp</a></span>
+              <span class="project-desc">MCP server that automatically converts any OpenAPI/Swagger specification into a set of usable MCP tools</span>
+            </div>
+            <span class="project-arrow">→</span>
+          </li>
+
+          <li class="project-item">
+            <div class="project-icon">✈️</div>
+            <div>
+              <span class="project-name"><a href="https://github.com/bbonnin/travel-assistant" target="_blank" rel="noopener">travel-assistant</a></span>
+              <span class="project-desc">AI assistant for travels (example of using the langchain4j library)</span>
+            </div>
+            <span class="project-arrow">→</span>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ============================
+           SECTION: TALKS
+           ============================ -->
+      <section id="talks">
+
+        <div class="section-title">
+          <span class="section-pill">02</span>
+          <h2>Some talks</h2>
+        </div>
+
+        <!-- ============================
+             ANNEE 2026
+             ============================ -->
+        <h3>2026</h3>
+        <ul class="talks-list">
+          <li class="talk-item">
+            <div class="talk-title">Automatisation intelligente en temps réel: quand Kafka rencontre n8n et l'IA</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://github.com/bbonnin/devoxxfr2026-kafka-n8n-ia/blob/main/Slides%20-%20Automatisation%20intelligente%20avec%20n8n.pdf" target="_blank" rel="noopener">Devoxx Fr, Paris</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- ============================
+             ANNEE 2023
+             ============================ -->
+        <h3>2023</h3>
+        <ul class="talks-list">
+          <li class="talk-item">
+            <div class="talk-title">R2DBC = R2D2 + JDBC (enfin presque...)</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="#" target="_blank" rel="noopener">Devoxx Ma, Agadir</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- ============================
+             ANNEE 2022
+             ============================ -->
+        <h3>2022</h3>
+        <ul class="talks-list">
+          <li class="talk-item">
+            <div class="talk-title">R2DBC = R2D2 + JDBC (enfin presque...)</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/r2dbc-equals-r2d2-plus-jdbc-enfin-presque-dot-dot-dot-d8cbd165-e769-48ef-a4dc-8d358fb2aa0e" target="_blank" rel="noopener">Devoxx Fr, Paris</a>
+                <a class="tag-video" href="https://youtu.be/0nrTtSzLdyw" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- ============================
+             ANNEE 2019
+             ============================ -->
+        <h3>2019</h3>
+        <ul class="talks-list">
+
+          <li class="talk-item">
+            <div class="talk-title">Stream processing avec Apache Pulsar</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/stream-processing-avec-apache-pulsar-b3106b65-5334-4d43-8934-a13884a6f5af" target="_blank" rel="noopener">Paris Open Source Summit</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/stream-processing-avec-apache-pulsar" target="_blank" rel="noopener">Devoxx Ma, Agadir</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Introduction à Apache Pulsar</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar" target="_blank" rel="noopener">Devoxx Fr, Paris</a>
+                <a class="tag-video" href="https://www.youtube.com/watch?v=GJPtzpu3v3I" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar-6d02497a-34d8-4a7a-98cc-fd67c9364cd7" target="_blank" rel="noopener">Paris Data Engineers</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/introduction-a-apache-pulsar-0b424424-8d8b-4afe-99cb-5f76be08e176" target="_blank" rel="noopener">SunnyTech, Montpellier</a>
+              </div>
+              <div class="talk-event">
+                <span class="tag-plain">Java User Group, Nantes</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">R + Java = 💛</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://bbonnin.github.io/talks/nantes-jug-2019/#0" target="_blank" rel="noopener">Java User Group, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- ============================
+             ANNEE 2018
+             ============================ -->
+        <h3>2018</h3>
+        <ul class="talks-list">
+
+          <li class="talk-item">
+            <div class="talk-title">De l'R, les devs Java !</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://bbonnin.github.io/talks/devoxx-maroc-2018/#0" target="_blank" rel="noopener">Devoxx Ma, Marrakech</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Stream processing et SQL</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-121218085" target="_blank" rel="noopener">ScalaIO, Lyon</a>
+                <a class="tag-video" href="https://www.youtube.com/watch?v=0fdozMlnkwQ" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-114503776" target="_blank" rel="noopener">JugSummerCamp, La Rochelle</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/stream-processing-et-sql-102460358" target="_blank" rel="noopener">Web2Day, Nantes</a>
+                <a class="tag-video" href="https://www.youtube.com/watch?v=mESYsjZuGyw" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Guide (un tout petit peu) pratique du stream processing</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/guide-un-tout-petit-peu-pratique-et-totalement-subjectif-du-stream-processing" target="_blank" rel="noopener">SunnyTech, Montpellier</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- ============================
+             ANNEE 2017
+             ============================ -->
+        <h3>2017</h3>
+        <ul class="talks-list">
+
+          <li class="talk-item">
+            <div class="talk-title">Stream processing et SQL</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/stream-processing-et-sql" target="_blank" rel="noopener">Devoxx Ma, Casablanca</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Progressive Web Apps with Vue.js</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/progressive-web-apps-with-vue-dot-js" target="_blank" rel="noopener">Devoxx Ma, Casablanca</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Vue.js, même un dev java peut en faire !</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/jug-summer-camp-2017-vuejs-mme-un-dev-java-peut-en-faire" target="_blank" rel="noopener">JugSummerCamp, La Rochelle</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/vuejs-mme-un-dev-java-peut-en-faire" target="_blank" rel="noopener">BreizhCamp, Rennes</a>
+                <a class="tag-video" href="https://www.youtube.com/watch?v=rbCnLNu8Y_c" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://www.youtube.com/watch?v=4hAf2Z8fDyY" target="_blank" rel="noopener">Web2Day, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- ============================
+             ANNEE 2016
+             ============================ -->
+        <h3>2016</h3>
+        <ul class="talks-list">
+
+          <li class="talk-item">
+            <div class="talk-title">Apache Spark avec NodeJS ? Oui, c'est possible avec EclairJS !</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/apache-spark-avec-nodejs-oui-cest-possible-avec-eclairjs" target="_blank" rel="noopener">DevFest, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Vue, j'avais pas vu !</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/vue-javais-pas-vu" target="_blank" rel="noopener">Codeurs en Seine, Rouen</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Explorez vos données présentes dans MongoDB avec Apache Zeppelin</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://fr.slideshare.net/BrunoBonnin/explorez-vos-donnes-prsentes-dans-mongodb-avec-apache-zeppelin" target="_blank" rel="noopener">MongoDB User Group, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Big data viz (and much more!) with Apache Zeppelin</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/big-data-viz-and-much-more-with-apache-zeppelin" target="_blank" rel="noopener">Web2Day, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Tout ce que le getting started MongoDB ne vous dira pas</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/tout-ce-que-le-getting-started-mongodb-ne-vous-dira-pas-1" target="_blank" rel="noopener">Web2Day, Nantes</a>
+              </div>
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/tout-ce-que-le-getting-started-mongodb-ne-vous-dira-pas" target="_blank" rel="noopener">BreizhCamp, Rennes</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Explorez vos données avec Apache Zeppelin</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/explorez-vos-donnees-avec-apache-zeppelin" target="_blank" rel="noopener">Human Talks, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- ============================
+             ANNEE 2015
+             ============================ -->
+        <h3>2015</h3>
+        <ul class="talks-list">
+
+          <li class="talk-item">
+            <div class="talk-title">MongoDB et son connecteur pour Hadoop</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/mongodb-et-son-connecteur-pour-hadoop" target="_blank" rel="noopener">MongoDB User Group, Nantes</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="talk-item">
+            <div class="talk-title">Comment (ne pas réussir à) modéliser ses data dans Elasticsearch</div>
+            <div class="talk-venues">
+              <div class="talk-event">
+                <a class="tag-venue" href="https://speakerdeck.com/bbonnin/comment-ne-pas-reussir-a-modeliser-ses-data-dans-elasticsearch" target="_blank" rel="noopener">BreizhCamp, Rennes</a>
+                <a class="tag-video" href="https://www.youtube.com/watch?v=UteT4ARW-eE" target="_blank" rel="noopener">📺 vidéo</a>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </section>
+
+      <!-- ============================
+           SECTION: TRAVELS
+           ============================ -->
+      <section id="travels">
+
+        <div class="section-title">
+          <span class="section-pill">03</span>
+          <h2>And my travels !!</h2>
+        </div>
+
+        <div id="travel-map" class="travel-map"></div>
+
+      </section>
+
+    </div>
+  </main>
+
   <script>
     const map = new Datamap({
       element: document.getElementById('travel-map'),
       projection: 'mercator',
       responsive: false,
       geographyConfig: {
-        highlightOnHover: true,
+        highlightOnHover: false,
         borderColor: '#333',
         borderWidth: 0.3,
         popupTemplate: function(geography, data) {
-          return geography.properties.name;
+          return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
         }
       },
       fills: {
@@ -108,7 +864,9 @@ My favorite technologies right now: NoSQL databases (such as <a href="https://un
         BEL: { fillKey: 'hasTraveledTo' },
         NLD: { fillKey: 'hasTraveledTo' },
         GBR: { fillKey: 'hasTraveledTo' },
-        IRL: { fillKey: 'hasTraveledTo' }
+        IRL: { fillKey: 'hasTraveledTo' },
+        LTU: { fillKey: 'hasTraveledTo' },
+        HRV: { fillKey: 'hasTraveledTo' }
       }
     });
 
@@ -116,5 +874,5 @@ My favorite technologies right now: NoSQL databases (such as <a href="https://un
       map.resize();
     });
   </script>
-  </body>
+</body>
 </html>
