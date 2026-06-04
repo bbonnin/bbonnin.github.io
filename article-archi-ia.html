@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA agentique — Bruno Bonnin</title>
+
+  <!-- URL canonique -->
+  <link rel="canonical" href="https://bbonnin.github.io/article-archi-ia.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" /> <!-- website -->
+  <meta property="og:site_name" content="Bruno Bonnin's Home Page" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="IA agentique : comment construire une architecture qui ne sera pas obsolète dans 6 mois ?" />
+  <meta property="og:description" content="IA agentique : comment construire une architecture qui ne sera pas obsolète dans 6 mois ?" />
+  <meta property="og:url" content="https://bbonnin.github.io/article-archi-ia.html" />
+  <meta property="og:image" content="https://bbonnin.github.io/assets/img/archi-1.jpg" />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1280" />
+  <meta property="og:image:alt" content="Photo architecture" />
+
+  <!-- Article -->
+  <meta property="article:published_time" content="2026-06-04T08:00:00+02:00" />
+  <meta property="article:modified_time" content="2026-06-04T08:00:00+02:00" />
+  <meta property="article:author" content="Bruno Bonnin" />
+  <meta property="article:section" content="Architecture logicielle" />
+  <meta property="article:tag" content="LinkedIn" />
+  <meta property="article:tag" content="Open Graph" />
+  <meta property="article:tag" content="SEO" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://bbonnin.github.io/assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <style>
+    /* -- Override fonts for article feel -- */
+    :root {
+      --font-display: 'DM Sans', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-light: #eff6ff;
+      --color-accent-mid: #bfdbfe;
+      --color-border-hover: #bfdbfe;
+      --max-width: 860px;
+    }
+
+    /* -- Article title (h1) -- */
+    .article-title {
+      
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* -- Meta bar -- */
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.85rem 1.1rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      margin-bottom: 2.5rem;
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+    }
+    .article-meta .meta-sep { color: var(--color-border); }
+    .article-meta .meta-tag {
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      font-weight: 600;
+      padding: 0.15rem 0.55rem;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* -- Hero section as article intro -- */
+    .article-hero {
+      padding: 3rem 0 0;
+    }
+    .article-hero .section-title { margin-bottom: 1.5rem; }
+
+    /* -- Lead paragraph (chapeau) -- */
+    .lead {
+      
+      font-size: 1.15rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      margin-bottom: 1.5rem;
+      padding-left: 1.2rem;
+      border-left: 3px solid var(--color-accent);
+    }
+
+    /* -- Regular article paragraphs -- */
+    .article-body p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--color-text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    /* -- Pull-quote / callout block -- */
+    .callout {
+      margin: 2rem 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--color-accent-light);
+      border: 1px solid var(--color-accent-mid);
+      border-radius: var(--radius);
+    }
+    .callout p {
+      
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--color-accent-hover);
+      margin: 0;
+    }
+
+    /* -- Chapter header -- */
+    .chapter-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .chapter-number {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 3px;
+    }
+    .chapter-header h2 {
+      
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 0.3rem;
+    }
+    .chapter-header .section-pill { margin: 0; }
+
+    .question-block { margin: 1.25rem 0; }
+    .question-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    .question-list li {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      padding: 0.15rem 0;
+      font-weight: bold;
+    }
+
+    /* -- Sections -- */
+    section { padding: 2.5rem 0; }
+    section.article-hero { border-bottom: 1px solid var(--color-border); padding-bottom: 2.5rem; }
+
+    /* -- Divider between intro paragraphs -- */
+    .intro-divider {
+      border: none;
+      border-top: 1px dashed var(--color-border);
+      margin: 1.5rem 0;
+    }
+
+    /* Animations overrides */
+    .article-hero { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+    #brique-1     { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both 0.07s; }
+    #brique-2     { animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both 0.14s; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="#" class="site-name">Y a pas que l'IA dans la vie !</a>
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/bbonnin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <span class="label">GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/bruno-bonnin/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.2 24 22.222 24h.003z"/></svg>
+            <span class="label">LinkedIn</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="article-hero">
+
+      <div class="article-meta">
+        <span class="meta-tag">Architecture</span>
+        <span class="meta-tag">IA agentique</span>
+      </div>
+
+      <h1 class="article-title">
+        IA agentique : comment construire une architecture qui ne sera pas obsolète dans 6 mois ?
+      </h1>
+
+      <div class="article-body">
+        <p>
+          Entre nous, vous n'en avez pas un peu marre d'entendre des phrases de types "Je veux un usage d'IA par mois !", ou "Posez-moi un serveur MCP ! Pourquoi faire ? Ch'ai pas...", ou "T'as vu le dernier modèle de chez OpenMistropic ? J'ai pu refaire mon application en 2h, alors qu'il m'avait fallu 3 ans pour arriver à ma première verison stable avant ça !". Bref...
+        </p>
+
+        <p>
+          Néanmoins, en tant qu'architecte, on doit se poser la question : <strong>comment construire quelque chose de solide quand les fondations technologiques changent toutes les trois semaines ?</strong> Et la réponse n'est pas forcément simple...
+        </p>
+        <p>
+          Mais, avant de choisir le moindre outil, posez-vous ces trois questions (inspirées d'<em>Une année difficile</em> 😉)
+        </p>
+
+        <div class="question-block">
+          <ul class="question-list">
+            <li>Ai-je besoin d'IA ?</li>
+            <li>Ai-je <em>vraiment</em> besoin d'IA ?</li>
+            <li>Ai-je vraiment besoin d'IA <em>maintenant</em> ?</li>
+          </ul>
+        </div>
+
+        <p>
+          Si vous répondez oui à chaque étape, alors oubliez les solutions miracles propriétaires et figées. Dans le monde de l'IA, tout bouge beaucoup trop vite, et rien de neuf dans la manière de répondre à ça : il va falloir penser <strong>architecture modulaire</strong> pour rester paré à toute éventualité. Le secret ne réside pas dans le choix du meilleur modèle actuel, mais dans la façon dont vous assemblez vos briques pour rester indépendant.
+        </p>
+        <p>
+          C'est le principe d'une <strong>architecture en couches</strong> : chaque composant a une responsabilité unique, ils communiquent via des interfaces standardisées, et on peut en remplacer un sans tout reconstruire. Nous allons en explorer cinq, du modèle local jusqu'à la gouvernance en production.
+        </p>
+      </div>
+
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section id="chapter-1">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">1</span>
+            <h2>Servir les modèles</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            Tout le monde, ou presque, a déjà installé <strong>Ollama</strong> sur son PC, a testé ses premiers modèles en local (Llama, Mistral, Qwen, ...) et s'est dit : "Mais c'est carrément chouette !" (peut-être que la phrase était tout autre, mais je ne veux heurter personne...).
+          </p>
+          <p>
+            C'est en effet un excellent point de départ. Faire tourner un LLM à 100% sur sa propre machine, de manière confidentielle et gratuite, offre une liberté totale pour prototyper et comprendre la technologie. Et quand je dis 100%, c'est vrai que tout est local, mais c'est aussi 100% de votre CPU pour des modèles pas forcément au top...
+          </p>
+          <p>
+            Mais l'effet de nouveauté passé, une question cruciale apparaît : j'ai des modèles à disposition, mais comment les connecter à mes outils métiers ?
+          </p>
+          <p>
+            Discuter avec une IA dans un terminal ou une interface de chat isolée ne suffit pas. Pour automatiser de vrais processus, l'IA doit pouvoir interagir avec le reste de votre écosystème d'entreprise (lire un e-mail, interroger une base de données, envoyer une notification).
+          </p>
+          <p>
+            Le premier réflexe, si vous avez un profil technique, est logique : écrire un script Python pour interconnecter l'API d'Ollama avec vos outils. Et pour un projet solo, ça fonctionne très bien. L'API est stable, documentée, vous maîtrisez votre code.
+          </p>
+          <p>
+            Le problème surgit quand on veut passer à l'échelle. Dès que vous ajoutez des conditions logiques complexes, ou que vous souhaitez permettre à des collègues non-techniques de modifier une règle métier, votre script s'alourdit de centaines de lignes de code qui n'ont plus rien à voir avec l'intelligence de vos modèles. Vous passez alors plus de temps à maintenir la tuyauterie qu'à améliorer ce qui compte vraiment.
+          </p>
+          <p>
+            C'est le premier signal que votre architecture a besoin d'une couche supplémentaire.
+          </p>
+        </div>
+      </section>
+
+     <section id="chapter-2">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">2</span>
+            <h2>Construire les agents</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            Votre modèle tourne, il répond à vos questions. Mais pour l'instant, il ne fait rien. Il ne lit pas vos e-mails, ne crée pas de tickets, ne prend pas de décisions. Pour passer d'un modèle qui répond à un <strong>agent</strong> qui agit, il faut lui donner une structure : un objectif, des étapes, des outils, et une logique pour enchaîner tout ça.
+          </p>
+          <p>
+            C'est précisément ce que nous allons construire dans cette couche et deux chemins existent selon votre contexte.
+          </p>
+
+          <h3>L'approche visuelle - n8n</h3>
+          <p>
+            Si votre objectif est de prototyper rapidement ou d'embarquer des collègues non-techniques dans la boucle, <strong>n8n</strong> est l'outil adapté. Il vous permet de cartographier graphiquement vos processus métiers plutôt que de les figer dans du code et n'importe qui peut les lire, les comprendre, et les modifier sans avoir à ouvrir un terminal.
+          </p>
+          <p>
+            Concrètement, un flux n8n s'articule toujours autour de trois temps :
+            <ul>
+              <li>L'événement : un formulaire soumis, un e-mail reçu, un événement applicatif</li>
+              <li>La transformation : la donnée est mise en forme et transmise au modèle avec des consignes précises</li>
+              <li>Le routage : en fonction de la réponse, le flux est aiguillé vers l'action appropriée : création d'un ticket, archivage, alerte</li>
+            </ul>
+          </p>
+          <p>
+            C'est cette lisibilité qui fait la force de n8n dans une équipe : une règle métier qui change ne nécessite pas une PR, une relecture de code et un redéploiement (qui pourraient être fait par des agents, mais ceci est une autre histoire 😉). Elle se modifie directement dans l'interface, par la personne qui la connaît le mieux.
+          </p>
+
+          <h3>L'approche code-first - Mozilla AI (ou LangChain, ou ...)</h3>
+          <p>
+            Si vous préférez rester dans votre IDE et manipuler vos composants directement en Python, Mozilla AI propose une alternative légère avec deux micro-librairies open-source :
+            <ul>
+              <li><strong>any-llm</strong> remplit le même rôle que LiteLLM mais dans votre code : une syntaxe unique pour appeler n'importe quel modèle, local ou Cloud. Vous intervertissez les modèles en modifiant une simple variable d'environnement, sans toucher à la logique de votre application.</li>
+              <li><strong>any-agent</strong> est la brique pour construire vos agents en code pur. En quelques lignes, vous attribuez une mission à l'IA, lui injectez du contexte et de la mémoire, et lui associez des outils via MCP. Sans couches d'abstraction inutiles.</li>
+            </ul>
+          </p>
+          <p>
+            Quel chemin choisir ?
+            <table>
+              <tr><th></th><th>n8n</th><th>Mozilla AI</th></tr>
+              <tr><td>Profil</td><td>Mixte, équipes non-techniques</td><td>Développeurs</td></tr>
+              <tr><td>Prise en main</td><td>Rapide, visuelle</td><td>Nécessite du code</td></tr>
+              <tr><td>Flexibilité</td><td>Bonne</td><td>Totale</td></tr>
+              <tr><td>Idéal pour</td><td>Prototyper, automatiser des flux métiers</td><td>Intégrer des agents dans une codebase existante</td></tr>
+            </table>
+          </p>
+        </div>
+      </section>
+
+      <section id="chapter-3">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">3</span>
+            <h2>S'affranchir des fournisseurs de modèles</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            Votre architecture fonctionne. Vos agents tournent, vos flux sont en place. Puis arrive le moment inévitable : votre infrastructure locale sature, ou une tâche spécifique (analyser 300 pages de contrat, traiter un volume massif de données) dépasse ce que votre machine peut raisonnablement absorber.
+          </p>
+          <p>
+            Vous allez devoir solliciter un modèle Cloud.
+          </p>
+          <p>
+            C'est là que le piège se referme si vous n'y avez pas pensé en amont. Chaque fournisseur (OpenAI, Anthropic, Mistral) a son propre format d'API, ses propres paramètres, ses propres conventions. Si vos agents sont configurés directement pour parler à Ollama, migrer même partiellement vers le Cloud signifie rouvrir vos flux, réécrire vos appels, gérer de nouvelles clés. Pour chaque fournisseur.
+          </p>
+          <p>
+            <strong>LiteLLM</strong> résout ce problème en s'intercalant comme une gateway universel entre vos agents et vos modèles. Vos agents ne connaissent plus qu'un seul interlocuteur, avec un format standardisé. C'est LiteLLM qui se charge de traduire et router en coulisses :
+            <ul>
+              <li>Une tâche courante avec des données sensibles ? Routée vers votre instance Ollama locale.</li>
+              <li>Un document volumineux nécessitant un grand contexte ? Basculée vers un modèle Cloud.</li>
+              <li>Un nouveau modèle plus performant sort demain ? Ajouté en une ligne de configuration, sans toucher à vos agents.</li>
+            </ul>
+          </p>
+          <p>
+            Ce que vous gagnez n'est pas seulement de la flexibilité technique — c'est de l'indépendance stratégique. Vous ne êtes plus captif d'un fournisseur parce que votre code lui est intimement lié. Vous choisissez vos modèles pour ce qu'ils valent, pas pour ce que ça coûterait d'en changer.
+          </p>
+        </div>
+      </section>
+
+      <section id="chapter-4">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">4</span>
+            <h2>Fournir des outils aux agents</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            Vos agents savent raisonner, mais pour l'instant, ils travaillent en vase clos : ils ne peuvent ni lire votre calendrier, ni interroger votre base de données, ni pousser un commit sur votre dépôt Git. Pour qu'un agent soit vraiment autonome, il doit pouvoir agir sur votre SI.
+          </p>
+          <p>
+            Le réflexe historique était de coder un connecteur sur-mesure pour chaque outil. Fastidieux, rigide, et impossible à maintenir à l'échelle.
+          </p>
+          <p>
+            C'est exactement le problème que résout le protocole MCP (Model Context Protocol). Développé initialement par Anthropic et devenu depuis un standard ouvert massivement adopté par l'industrie, c'est le format universel qui permet à n'importe quel agent compatible de détecter, comprendre et utiliser un outil, sans connecteur sur-mesure.
+          </p>
+          <p>
+            Le principe est simple : vous exposez vos applications, vos bases de données sous forme de serveurs MCP. À partir de là, tout agent compatible peut s'y brancher instantanément, qu'il soit construit avec n8n, Mozilla AI, ou n'importe quel autre framework supportant le protocole.
+          </p>
+          <p>
+            Il existe déjà des serveurs MCP pour toute sorte de services (et leur nombre croît très rapidement) : calendriers, bases SQL, systèmes de fichiers, dépôts Git, outils de ticketing, Slack.
+          </p>
+          <p>
+            Ce qui rend MCP structurellement important pour votre architecture, c'est sa nature découplée : vos outils sont exposés une seule fois, et tous vos agents en bénéficient. Vous ajoutez un nouvel outil ? Vous créez un serveur MCP. Vous changez de modèle ou d'orchestrateur ? Vos serveurs MCP, eux, ne bougent pas.
+          </p>
+        </div>
+      </section>
+
+      <section id="chapter-5">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">5</span>
+            <h2>Contrôler et sécuriser les appels aux outils</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            Vos serveurs MCP sont en place, vos agents s'en servent efficacement. Mais dès que vous souhaitez déployer tout ça à l'échelle d'une équipe ou d'une entreprise, une question inévitable se pose : qui contrôle ce que les agents ont le droit de faire ?
+          </p>
+          <p>
+            Sans couche de contrôle, un agent mal prompté peut bombarder votre base de données de requêtes, appeler des API sans restriction, ou accéder à des ressources qu'il ne devrait pas voir. Et dans la plupart des entreprises, vos systèmes existants ne parlent pas MCP — ils exposent des API REST classiques que vos agents ne savent pas adresser directement.
+          </p>
+          <p>
+            C'est le rôle de la Gateway MCP : s'intercaler entre vos agents et vos serveurs MCP pour jouer à la fois le rôle de traducteur et de douanier.
+          </p>
+          <p>
+            La traduction de protocoles d'abord. Votre agent envoie une requête au format MCP. La Gateway la réceptionne, la traduit en appel REST ou gRPC que vos systèmes internes comprennent, puis renvoie la réponse au format MCP à l'agent. Vos applications existantes n'ont pas besoin d'être réécrites pour devenir compatibles.
+          </p>
+          <p>
+            La gouvernance ensuite. C'est la Gateway qui gère le chiffrement, vérifie les droits d'accès de chaque agent, et applique du rate limiting — pour éviter qu'un agent bloqué dans une boucle infinie ne mette à genoux vos serveurs.
+          </p>
+          <p>
+            Sur le marché, deux approches coexistent. Des solutions spécialisées comme IBM ContextForge défrichent le terrain avec une vision native MCP, mais manquent encore de maturité pour de la production pure. En parallèle, des acteurs infrastructure établis comme Kong ont intégré la gestion MCP dans leurs AI Gateway — avec l'avantage d'une technologie éprouvée et d'un écosystème déjà en place dans de nombreuses entreprises.
+          </p>
+          <p>
+            En ajoutant cette couche, vous franchissez un seuil : vous ne bidouillez plus un prototype de génie, vous opérez une architecture IA robuste, auditable et prête pour l'entreprise.
+          </p>
+        </div>
+      </section>
+
+      <section id="conclusion">
+        <div class="chapter-header">
+          <div>
+            <span class="section-pill">Nouveau set Lego 34575</span>
+            <h2>Conclusion</h2>
+          </div>
+        </div>
+
+        <div class="article-body">
+          <p>
+            En refusant les solutions magiques "tout-en-un" et en assemblant vos propres briques (que ce soit visuellement avec n8n ou par le code avec les librairies de Mozilla AI), vous disposez désormais d'un plan de montage pour une infrastructure IA robuste, interchangeable et prête pour l'avenir.
+          </p>
+          <p>
+            Mais avant de se lancer dans votre premier agent, il reste une ultime étape, sans doute la plus importante de toutes : revenir à notre triple question de départ.
+          </p>
+          <div class="question-block">
+            <ul class="question-list">
+              <li>Ai-je besoin d'IA ?</li>
+              <li>Ai-je <em>vraiment</em> besoin d'IA ?</li>
+              <li>Ai-je vraiment besoin d'IA <em>maintenant</em> ?</li>
+            </ul>
+          </div>
+          <p>
+            La vérité, c'est qu'en architecture comme en ingénierie, la simplicité est la sophistication suprême. Et la réponse à cette triple question est bien souvent : "non, pas toujours".
+          </p>
+          <p>
+            L'IA agentique est une technologie fascinante, mais elle est gourmande en ressources, introduit une part d'imprévisibilité et demande une maintenance continue. Si votre objectif est de trier des e-mails selon des mots-clés précis, un filtre RegEx ou un script traditionnel de dix lignes sera toujours plus rapide, plus fiable et moins coûteux qu'un agent LLM qui tourne en boucle. Si votre besoin est de synchroniser deux bases de données, un bon vieux connecteur d'API classique (une simple ligne droite dans n8n) fera le travail à la perfection, sans risque d'hallucination.
+          </p>
+          <p>
+            L'IA ne doit pas être une surcouche cosmétique pour faire "moderne", mais une réponse ciblée à un problème complexe que le code traditionnel ne peut pas résoudre (analyser du langage naturel, détecter des intentions floues, synthétiser des volumes de données non structurées).
+          <p>
+            Construire une architecture agile, c'est aussi acquérir le discernement nécessaire pour savoir quand laisser les Legos dans leur boîte. L'agilité, ce n'est pas mettre de l'IA partout, c'est s'assurer que le jour où vous en aurez vraiment, vraiment besoin, votre système sera prêt à l'accueillir proprement.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
