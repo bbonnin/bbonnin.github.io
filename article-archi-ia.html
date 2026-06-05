@@ -37,7 +37,6 @@
   <link rel="stylesheet" href="assets/css/home.css">
 
   <style>
-    /* -- Override fonts for article feel -- */
     :root {
       --font-display: 'DM Sans', system-ui, sans-serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
@@ -94,7 +93,6 @@
 
     /* -- Lead paragraph (chapeau) -- */
     .lead {
-      
       font-size: 1.15rem;
       line-height: 1.75;
       color: var(--color-text);
@@ -177,6 +175,9 @@
       padding: 0.15rem 0;
       font-weight: bold;
     }
+    .question-bullet {
+
+    }
     .article-body table {
       width: 100%;
       border-collapse: collapse;
@@ -210,6 +211,10 @@
 
     img {
       max-width: 860px;;
+    }
+
+    .centered {
+      text-align: center;
     }
 
     /* -- Sections -- */
@@ -267,14 +272,14 @@
 
       <div class="article-body">
         <p>
-          Entre nous, vous n'en avez pas un peu marre d'entendre des phrases de types "Je veux un usage d'IA par mois !", ou "Posez-moi un serveur MCP ! Pourquoi faire ? Ch'ai pas...", ou "T'as vu le dernier modèle de chez OpenMistropic ? J'ai pu refaire mon application en 2h, alors qu'il m'avait fallu 3 ans pour arriver à ma première verison stable avant ça !". Bref...
+          Entre nous, vous n'en avez pas un peu marre d'entendre des phrases de types "Je veux un usage d'IA par mois !", ou "Posez-moi un serveur MCP ! Pourquoi faire ? Je sais pas, mais il en faut...", ou "T'as vu le dernier modèle de chez <strong>OpenMistropic</strong> ? J'ai pu refaire mon application en 2h, alors qu'il m'a fallu 3 ans pour arriver à ma première version stable avant ça !". Bref...
         </p>
 
         <p>
           Néanmoins, en tant qu'architecte, on doit se poser la question : <strong>comment construire quelque chose de solide quand les fondations technologiques changent toutes les trois semaines ?</strong> Et la réponse n'est pas forcément simple...
         </p>
         <p>
-          Mais, avant de choisir le moindre outil, posez-vous ces trois questions (inspirées d'<a href="https://fr.wikipedia.org/wiki/Une_ann%C3%A9e_difficile"><em>Une année difficile</em></a> 😉)
+          Mais, avant de choisir le moindre outil, posez-vous ces trois questions (merci à <a href="https://fr.wikipedia.org/wiki/Une_ann%C3%A9e_difficile"><em>Une année difficile</em></a> pour l'inspiration😉)
         </p>
 
         <div class="question-block">
@@ -286,13 +291,13 @@
         </div>
 
         <p>
-          Si vous répondez oui à chaque étape, alors oubliez les solutions miracles propriétaires et figées. Dans le monde de l'IA, tout bouge beaucoup trop vite, et rien de neuf pour répondre à ça : il va falloir penser <strong>architecture modulaire</strong> pour rester paré à toute éventualité. Le secret ne réside pas dans le choix du meilleur modèle actuel, mais dans la façon dont vous assemblez vos composants pour rester indépendant.
+          Si vous répondez oui à chaque étape, alors oubliez les solutions miracles propriétaires et figées. Dans le monde de l'IA, tout bouge beaucoup trop vite, et rien de neuf pour répondre à ça : il va falloir penser <strong>architecture modulaire</strong> pour rester paré à toute éventualité. Le secret ne réside pas dans le choix du meilleur modèle actuel, mais dans la façon dont vous assemblez vos composants pour <strong>rester indépendant</strong>.
         </p>
         <p>
           C'est le principe d'une <strong>architecture en couches</strong> : chaque composant a une responsabilité unique, ils communiquent via des interfaces standardisées, et on peut en remplacer un sans tout reconstruire.
         </p>
         <p>
-          Nous allons en explorer cinq, du modèle local jusqu'à la gouvernance en production.
+          Nous allons en explorer quelques-uns, qui devraient vous permettre de vous sentir plus serein pour la suite, enfin, au moins pour 6 mois...
         </p>
       </div>
 
@@ -313,7 +318,7 @@
           <p>
             Tout le monde, ou presque, a déjà installé <a href="https://ollama.com/">Ollama</a> sur son PC, a testé ses premiers modèles en local (Llama, Mistral, Qwen, ...) et s'est dit : "Mais c'est carrément chouette !" (peut-être que la phrase était tout autre, mais je ne veux heurter personne...).
           </p>
-          <p style="text-align: center;">
+          <p class="centered">
             <img src="assets/img/model-server.png">
           </p>
           <p>
@@ -359,7 +364,7 @@
           <p>
             Concrètement, un flux <strong>n8n</strong> s'articule toujours autour de trois temps :
             <div class="question-block">
-              <ul class="question-list"  style="list-style: disc;">
+              <ul class="question-list question-bullet">
                 <li>L'événement : un formulaire soumis, un e-mail reçu, un événement applicatif</li>
                 <li>La transformation : la donnée est mise en forme et transmise au modèle avec des consignes précises</li>
                 <li>Le routage : en fonction de la réponse, le flux est aiguillé vers l'action appropriée : création d'un ticket, archivage, alerte</li>
@@ -374,13 +379,13 @@
           <p>
             Si vous préférez rester dans votre IDE et manipuler vos composants directement en Python, Mozilla AI propose une alternative légère avec deux micro-librairies open-source :
             <div class="question-block">
-              <ul class="question-list"  style="list-style: disc;">
+              <ul class="question-list question-bullet">
                 <li><a href="https://docs.mozilla.ai/">any-llm</a> remplit le même rôle que LiteLLM mais dans votre code : une syntaxe unique pour appeler n'importe quel modèle, local ou Cloud. Vous intervertissez les modèles en modifiant une simple variable d'environnement, sans toucher à la logique de votre application.</li>
                 <li><a href="https://docs.mozilla.ai/any-agent">any-agent</a> est la brique pour construire vos agents en code pur. En quelques lignes, vous attribuez une mission à l'IA, lui injectez du contexte et de la mémoire, et lui associez des outils via MCP. Sans couches d'abstraction inutiles.</li>
               </ul>
             </div>
           </p>
-          <p style="text-align: center;">
+          <p class="centered">
             <img src="assets/img/model-clients.png">
           </p>
           <h3>Quel chemin choisir ?</h3>
@@ -408,22 +413,22 @@
             Votre architecture fonctionne. Vos agents tournent, vos flux sont en place. Puis arrive le moment inévitable : votre infrastructure locale sature, ou une tâche spécifique (analyser 300 pages de contrat, traiter un volume massif de données) dépasse ce que votre machine peut raisonnablement absorber.
           </p>
           <p>
-            Vous allez devoir solliciter un modèle Cloud ou hébergé on-premise, mais ailleurs que sur votre machine.
+            Vous allez devoir solliciter un modèle Cloud ou hébergé on-premise avec de la GPU, mais ailleurs que sur votre machine ou sur votre petite VM.
           </p>
           <p>
             C'est là que le piège se referme si vous n'y avez pas pensé en amont. Chaque fournisseur (OpenAI, Anthropic, Mistral) a son propre format d'API, ses propres paramètres, ses propres conventions. Si vos agents sont configurés directement pour parler à Ollama, migrer même partiellement vers le Cloud signifie rouvrir vos flux, réécrire vos appels, gérer de nouvelles clés pour chaque fournisseur.
           </p>
           <p>
-            <strong>LiteLLM</strong> résout ce problème en s'intercalant comme une gateway universel entre vos agents et vos modèles. Vos agents ne connaissent plus qu'un seul interlocuteur, avec un format standardisé. C'est LiteLLM qui se charge de traduire et router en coulisses :
+            <strong>LiteLLM</strong> résout ce problème en s'intercalant comme une <strong>gateway entre vos agents et vos modèles</strong>. Vos agents ne connaissent plus qu'un seul interlocuteur, avec un format standardisé. C'est LiteLLM qui se charge de traduire et router en coulisses :
             <div class="question-block">
-              <ul class="question-list" style="list-style: disc;">
+              <ul class="question-list question-bullet">
                 <li>Une tâche courante avec des données sensibles ? Routée vers votre instance Ollama locale.</li>
                 <li>Un document volumineux nécessitant un grand contexte ? Basculée vers un modèle Cloud.</li>
                 <li>Un nouveau modèle plus performant sort demain ? Ajouté en une ligne de configuration, sans toucher à vos agents.</li>
               </ul>
             </div>
           </p>
-          <p style="text-align: center;">
+          <p class="centered">
             <img src="assets/img/model-gateway.png">
           </p>
           <p>
@@ -458,7 +463,7 @@
           <p>
             Ce qui rend <strong>MCP</strong> structurellement important pour votre architecture, c'est sa nature découplée : vos outils sont exposés une seule fois, et tous vos agents en bénéficient. Vous ajoutez un nouvel outil ? Vous créez un serveur MCP. Vous changez de modèle ou d'orchestrateur ? Vos serveurs MCP, eux, ne bougent pas.
           </p>
-          <p style="text-align: center;">
+          <p class="centered">
             <img src="assets/img/mcp-servers.png">
           </p>
         </div>
@@ -488,10 +493,16 @@
             La gouvernance ensuite. C'est la Gateway qui gère le chiffrement, vérifie les droits d'accès de chaque agent, et applique du rate limiting, pour éviter qu'un agent bloqué dans une boucle infinie ne mette à genoux vos serveurs.
           </p>
           <p>
-            Sur le marché, deux approches coexistent. Des solutions spécialisées comme <a href="https://github.com/IBM/mcp-context-forge">IBM ContextForge</a> défrichent le terrain avec une vision native MCP, mais manquent encore de maturité pour de la production pure. En parallèle, des acteurs établis comme Kong ont intégré la gestion MCP dans leurs <strong>AI Gateway</strong> (exemple de la <a href="https://konghq.com/products/kong-ai-gateway">Kong AI Gateway</a>), avec l'avantage d'une technologie éprouvée et d'un écosystème déjà en place dans de nombreuses entreprises.
+            Sur le marché, deux approches coexistent. Des solutions spécialisées comme <a href="https://github.com/IBM/mcp-context-forge">IBM ContextForge</a> défrichent le terrain avec une vision native MCP, mais manquent encore de maturité pour de la production pure. En parallèle, des acteurs établis comme Kong ont intégré la gestion MCP dans leurs <strong>AI Gateway</strong> (exemple de la <a href="https://konghq.com/products/kong-ai-gateway">Kong AI Gateway</a>), avec l'avantage d'une technologie éprouvée et d'un écosystème déjà en place dans de nombreuses entreprises. De plus, Kong, par exemple, permet de traduire en MCP tout service offrant une API REST, cela permet à une entreprise de rapidement MCP-iser les services existants.
           </p>
-          <p style="text-align: center;">
+          <p class="centered">
             <img src="assets/img/mcp-gateway.png">
+          </p>  
+          <p>
+            Mais, on peut aussi regarder du côté de... <strong>LiteLLM</strong> ! Malgré son nom, ses fonctions s'enrichissent et il est maintenant capable d'offrir des capacités autour de MCP.
+          </p>
+          <p class="centered">
+            <img src="assets/img/mcp-gateway-litellm.png">
           </p>
         </div>
       </section>
@@ -505,7 +516,7 @@
 
         <div class="article-body">
           <p>
-            En refusant les solutions magiques "tout-en-un" et en assemblant vos propres briques (que ce soit visuellement avec n8n ou par le code avec les librairies de Mozilla AI), vous disposez désormais d'un plan de montage pour une infrastructure IA robuste, interchangeable et prête pour l'avenir.
+            En refusant les solutions magiques "tout-en-un" et en assemblant vos propres briques, vous disposez désormais d'un plan de montage pour une infrastructure IA robuste, interchangeable et prête pour l'avenir.
           </p>
           <p>
             Mais avant de se lancer dans votre premier agent, il reste une ultime étape, sans doute la plus importante de toutes : revenir à notre triple question de départ.
@@ -526,7 +537,7 @@
           <p>
             L'IA ne doit pas être une surcouche cosmétique pour faire "moderne", mais une réponse ciblée à un problème complexe que le code traditionnel ne peut pas résoudre (analyser du langage naturel, détecter des intentions floues, synthétiser des volumes de données non structurées).
           <p>
-            Construire une architecture agile, c'est aussi acquérir le discernement nécessaire pour savoir quand laisser les Legos dans leur boîte. L'agilité, ce n'est pas mettre de l'IA partout, c'est s'assurer que le jour où vous en aurez vraiment, vraiment besoin, votre système sera prêt à l'accueillir proprement.
+            Construire une architecture agile, c'est aussi acquérir le discernement nécessaire pour savoir quand ne pas ajouter de complexité. L'agilité, ce n'est pas mettre de l'IA partout, c'est s'assurer que le jour où vous en aurez vraiment, vraiment besoin, votre système sera prêt à l'accueillir proprement.
           </p>
         </div>
       </section>
